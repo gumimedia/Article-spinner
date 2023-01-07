@@ -1,0 +1,123 @@
+import random 
+import os.path
+import pandas as pd 
+
+artikelgsheet = "1pjVL6GBJbsFBtcuMevPodXzzRKNYWFqz_WzUmN67BCU"
+
+df = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{artikelgsheet}/export?format=csv")
+#Input Tanggal 
+tgl = input("Tanggal: ")
+tanggal = df.loc[df['Tanggal'] == tgl, 'Tanggal'].tolist()
+
+#Paragraf-1
+#p1s1 = ["Sebuah video viral beredar di internet.","Beredar sebuah video viral di internet.","Sebuah video viral kembali beredar di internet."]
+#p1s2 = ["Dalam video tersebut terlihat ", "Dalam video tersebut tampak ", "Terlihat dalam video tersebut, ", "Tampak dalam video tersebut, "]
+#p1s3 = input("Fakta pembuka(Dalam video tersebut terlihat): ")
+#p1s3 = df.loc[df['Tanggal'] == tgl, 'Fakta Pembuka'].tolist()
+#p1s4 = ["Video ini viral dan menjadi perbincangan hangat warganet.", "Video ini kemudian viral di jagat sosial media.","Video ini pun menjadi bahan obrolan warganet.", "Video ini pun menjadi viral dan mendapat beragam komentar."] 
+
+
+#Paragraf-2
+#p2s1 = ["Video tersebut pertama kali diunggah oleh akun ", "Video ini di-upload oleh akun ", "Video viral tersebut diunggah oleh akun "]
+urutan = ["Video viral pertama berasal dari akun ", "Video viral kedua berasal dari akun ", "Video viral ketiga berasal dari akun ", "Video viral keempat berasal dari akun ", "Video viral kelima berasal dari akun "]
+#p2s21 = input("IG/TikTok(Video ini di-upload oleh akun): ")
+p2s21 = df.loc[df['Tanggal'] == tgl, 'Platform'].tolist()
+#p2s22 = input("ketik nama akun: ")
+p2s22 = df.loc[df['Tanggal'] == tgl, 'Nama Akun'].tolist()
+p2s31 = [" Dalam video yang berdurasi ", " Di dalam video dengan panjang durasi "]
+#p2s32 = input("Durasi tsb terlihat/menunjukan/tampak(Dalam video yang berdurasi): ")
+p2s32 = df.loc[df['Tanggal'] == tgl, 'Durasi'].tolist()
+#p2s4 = input("Fakta Lengkap(Telling story): ")
+p2s4 = df.loc[df['Tanggal'] == tgl, 'Fakta Lengkap'].tolist()
+
+#paragraf-3
+#kutipan = input("Dikutip dari/keterangan dalam video/caption video: ")
+#kutipan = df.loc[df['Tanggal'] == tgl, 'Kutipan'].tolist()
+#Paragraf-4
+p4s41 = ["Hingga kini video tersebut sudah ditonton lebih dari ", "Hingga saat berita ini ditulis, video tersebut sudah disaksikan lebih dari ", "Hingga saat berita ini dipublikasikan, video tersebut sudah disaksikan lebih dari ", "Hingga saat berita ini ditulis, video tersebut sudah ditonton kurang lebih sebanyak ", "Hingga saat berita ini dipublikasikan, video tersebut sudah ditonton kurang lebih "]
+#viewers = input("Jumlah viewers(Hingga kini video tersebut sudah ditonton lebih dari): ")
+viewers = df.loc[df['Tanggal'] == tgl, 'Jumlah Viewers'].tolist()
+p4s42 = ", mendapatkan  "
+#jumlahlikes = input("Jumlah like: ")
+jumlahlikes = df.loc[df['Tanggal'] == tgl, 'Jumlah Likes'].tolist()
+p4s43 = ", dan mendapat  "
+#jumlahKomen = input("Jumlah Komentar: ")
+jumlahKomen = df.loc[df['Tanggal'] == tgl, 'Jumlah Komen'].tolist()
+p4s44 = [" komentar dari para warganet "," komentar dari para netizen "," respon dari warganet "," respon dari netizen "]
+p4s5 = "di kolom komentar."
+p4s45 = ["Dari beberapa komentar yang ada di kolom komentar, kami sudah merangkum beberapa yang menarik untuk anda.", "Berikut beberapa komentar yang sudah kami kumpulkan dari kolom komentar.", "Dari sekian banyak komentar, ada 2 yang menarik perhatian.", "Kami sudah mengambil setidaknya dua komentar netizen yang menarik perhatian."]
+
+
+#Komentar 
+#Komentar1 = input("komentar 1: ")
+Komentar1 = df.loc[df['Tanggal'] == tgl, 'Komen 1'].tolist()
+#akunKomen1 = input("Nama Akun Komen 1: ")
+akunKomen1 = df.loc[df['Tanggal'] == tgl, 'Akun Komen 1'].tolist()
+#Komentar2 = input("komentar 2: ")
+Komentar2 = df.loc[df['Tanggal'] == tgl, 'Komen 2'].tolist()
+#akunKomen2 = input("Nama Akun Komen 2: ")
+akunKomen2 = df.loc[df['Tanggal'] == tgl, 'Akun Komen 2'].tolist()
+complement = " Tulis akun bernama "
+
+
+complEnd = " di kolom komentar."
+
+ending = "Lantas bagaimana pendapat anda mengenai video viral tersebut? "
+#inputending = input("inputending: ")
+#inputending = df.loc[df['Tanggal'] == tgl, 'Input Ending'].tolist()
+endinglast = ["Berikan komentar terbaik anda di kolom komentar.", "Berikan opini terbaik anda di kolom komentar.", "Berikan pendapat keren anda di kolom komentar."]
+
+cekicrot = ["Yuk, langsung saja kita intip videonya.", "Mari kita saksikan videonya", "Langsung saja kita saksikan video viral tersebut", "Tanpa berlama-lama, berikut video viral yang dimaksud", "Mari kita tonton videonya", "Langsung saja kita tonton video viral tersebut"]
+
+introStart = "Selamat datang di Dagum TV, sebuah channel yang berisi kumpulan video viral internet yang kami rangkum khusus untuk anda para netizen. Pada kesempatan kali ini kita mendapatkan 5 video viral ter-epic versi Dagum TV. "
+dari = "Dari video tentang "
+sampai = "sampai video tentang "
+judul1 = input("judul 1: ")
+judul2 = input("judul 2: ")
+
+for i in range(0,len(tanggal)):
+	#kalimat1 = random.choice(p1s1) 
+	#kalimat2 = random.choice(p1s2)
+	#kalimat3 = random.choice(p1s4)  
+	#kalimat4 = random.choice(p2s1)
+	kalimat5 = random.choice(p2s31)
+	kalimat6 = random.choice(p4s41)
+	kalimat7 = random.choice(p4s44)
+	kalimat8 = random.choice(p4s45)
+	ending1 = random.choice(endinglast) 
+	cekicrott = random.choice(cekicrot)
+	
+	paragraf2 = urutan[i] + p2s21[i] + " " + p2s22[i] + "." + kalimat5 + p2s32[i] + p2s4[i] + "\n"
+	#paragraf3 = kutipan[i] + "\n"
+	paragraf3 = cekicrott + "\n" + "\n"
+	paragraf4 = kalimat6 + viewers[i] + p4s42 + jumlahlikes[i] + p4s43 + jumlahKomen[i] + kalimat7 + p4s5 + kalimat8 + "\n"
+	komentar = "\"" + Komentar1[i] + "\"" + complement + akunKomen1[i] + complEnd + "\n" + "\"" + Komentar2[i] + "\""  + complement + akunKomen2[i] + complEnd + "\n"
+	endingfix = ending + ending1
+
+	artikel = paragraf2 + paragraf3 + paragraf4 + komentar + endingfix + "\n"+ "\n"
+
+	#with open('NASKAH' + "-" + str(i+1) + "-" + tgl + '.txt' , 'w') as f:
+	    #f.write(artikel)
+    
+	with open('NASKAH' + "-" + tgl + '.txt', 'a') as f:
+	    f.write(artikel)
+
+	print("\n")
+	print("-----------------------------------NASKAH" + str(i+1) + "-------------------------------------------")
+	print("\n")
+	print("\n")
+	print(artikel)
+	print("\n")
+	
+ 
+introvid = introStart + dari + judul1 + " " + sampai + judul2 + ". Baiklah tanpa berlama-lama lagi, berikut cuplikannya."
+
+def line_prepender(filename, line):
+    with open(filename, 'r+') as f:
+        content = f.read()
+        f.seek(0, 0)
+        f.write(line.rstrip('\r\n') + '\n' + content)
+
+line_prepender('NASKAH' + "-" + tgl + '.txt', introvid)
+
+
